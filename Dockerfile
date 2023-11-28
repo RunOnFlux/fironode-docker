@@ -5,9 +5,9 @@ LABEL com.centurylinklabs.watchtower.enable="true"
 
 RUN mkdir -p /root/.firo
 RUN apt-get update && apt-get install -y  tar wget curl pwgen jq
-RUN wget https://github.com/firoorg/firo/releases/download/v0.14.12.1/firo-0.14.12.1-linux64.tar.gz -P /tmp
-RUN tar xzvf /tmp/firo-0.14.12.1-linux64.tar.gz -C /tmp \
-&& cp /tmp/firo-c7e3ef0e6af6/bin/* /usr/local/bin
+RUN wget https://github.com/firoorg/firo/releases/download/v0.14.13.0/firo-0.14.13.0-linux64.tar.gz -P /tmp
+RUN tar xzvf /tmp/firo-0.14.13.0-linux64.tar.gz -C /tmp \
+&& cp /tmp/firo-39c41e5e7ec6/bin/* /usr/local/bin
 COPY node_initialize.sh /node_initialize.sh
 COPY check-health.sh /check-health.sh
 VOLUME /root/.firo
