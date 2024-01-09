@@ -1,13 +1,11 @@
-
-ARG UBUNTUVER=20.04
-FROM ubuntu:${UBUNTUVER}
+FROM ubuntu:20.04
 LABEL com.centurylinklabs.watchtower.enable="true"
-
+ENV FIRO_VERSION="0.14.13.1"
 RUN mkdir -p /root/.firo
-RUN apt-get update && apt-get install -y  tar wget curl pwgen jq
-RUN wget https://github.com/firoorg/firo/releases/download/v0.14.13.0/firo-0.14.13.0-linux64.tar.gz -P /tmp
-RUN tar xzvf /tmp/firo-0.14.13.0-linux64.tar.gz -C /tmp \
-&& cp /tmp/firo-39c41e5e7ec6/bin/* /usr/local/bin
+RUN apt-get update && apt-get install -y tar wget curl pwgen jq nano
+RUN wget https://github.com/firoorg/firo/releases/download/v${FIRO_VERSION}/firo-${FIRO_VERSION}-linux64.tar.gz -O /tmp/firo-linux64.tar.gz
+RUN tar xzvf /tmp/firo-linux64.tar.gz -C /tmp --strip-components=1 \
+    && cp /tmp/bin/* /usr/local/bin
 COPY node_initialize.sh /node_initialize.sh
 COPY check-health.sh /check-health.sh
 VOLUME /root/.firo
