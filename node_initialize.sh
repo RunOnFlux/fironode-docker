@@ -28,8 +28,9 @@ if [[ ! -f $CONFIG_FILE ]]; then
   echo "znodeblsprivkey=$KEY" >> $CONFIG_FILE
 fi
 
-# Check if znodeblsprivkey is empty or not
+# Check if KEY exist
 if [[ "$KEY" != "" ]]; then 
+  # Check if znodeblsprivkey is empty or not
   if grep -q "^znodeblsprivkey=$" $CONFIG_FILE; then
     # Replace with the provided key
     sed -i "s/^znodeblsprivkey=$/znodeblsprivkey=$KEY/" $CONFIG_FILE
