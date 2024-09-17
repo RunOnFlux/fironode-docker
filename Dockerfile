@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 LABEL com.centurylinklabs.watchtower.enable="true"
-ENV FIRO_VERSION="0.14.13.3"
+ENV FIRO_VERSION="0.14.14.0"
 RUN mkdir -p /root/.firo
 RUN apt-get update && apt-get install -y tar wget curl pwgen jq nano
 RUN wget https://github.com/firoorg/firo/releases/download/v${FIRO_VERSION}/firo-${FIRO_VERSION}-linux64.tar.gz -O /tmp/firo-linux64.tar.gz
